@@ -9,7 +9,7 @@ An original version was developed as part of a master thesis in computer science
 > Cesov M. Intra-Operative Guide in Augmented Reality With Head Mounted Devices in Oral and Maxillofacial Surgery.
 Aachen: RWTH Aachen University; Sep 07, 2020.
 
-**NOT FOR USE ON HUMANS!**
+**NOT FOR USE ON LIVING HUMANS!**
 
 ## Collaboration ##
 We are open for a further development. Feel free to contact us.
