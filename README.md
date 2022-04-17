@@ -14,14 +14,10 @@ Aachen: RWTH Aachen University; Sep 07, 2020.
 ## Collaboration ##
 We are open for a further development. Feel free to contact us.
 
-## Models
-
-## Unity Project
-
 ## Used software
 - [Unity 2020.3 LTS](https://unity.com/)
 - [Mixed Reality Toolkit 2.7.3](https://github.com/microsoft/MixedRealityToolkit-Unity)
-- [Vuforia 10.5](https://developer.vuforia.com/downloads/sdk)
+- [Vuforia 10.6](https://developer.vuforia.com/downloads/sdk)
 - [Runtime OBJ Importer](https://assetstore.unity.com/packages/tools/modeling/runtime-obj-importer-49547)
 
 ## License
