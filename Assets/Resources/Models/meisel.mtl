@@ -1,0 +1,12 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+newmtl GlossySilver
+Ns 540.562508
+Ka 1.000000 1.000000 1.000000
+Kd 0.527115 0.527115 0.527115
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3

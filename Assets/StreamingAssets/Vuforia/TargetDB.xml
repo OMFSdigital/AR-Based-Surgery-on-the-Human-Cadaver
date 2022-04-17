@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="SkullBot" size="0.080000 0.080000"/>
+        <ImageTarget name="Skull" size="0.080000 0.080000"/>
+        <ImageTarget name="Calibration" size="0.080000 0.080000"/>
+        <ImageTarget name="Tool_Meisel.Back" size="0.080000 0.080000"/>
+        <ImageTarget name="Tool_Meisel.Front" size="0.080000 0.080000"/>
+        <ImageTarget name="Tool_Saw.Back" size="0.080000 0.080000"/>
+        <ImageTarget name="Tool_Saw.Front" size="0.080000 0.080000"/>
+        <ImageTarget name="Stromeyer.Back" size="0.080000 0.080000"/>
+        <ImageTarget name="Stromeyer.Front" size="0.080000 0.080000"/>
+        <MultiTarget name="Tool_Meisel">
+            <Part name="Tool_Meisel.Front" translation="0 0 0.0024999999441206455" rotation="AD: 1 0 0 0"/>
+            <Part name="Tool_Meisel.Back" translation="0 0 -0.0024999999441206455" rotation="AD: 0 1 0 180"/>
+        </MultiTarget>
+        <MultiTarget name="Tool_Saw">
+            <Part name="Tool_Saw.Front" translation="0 0 0.0024999999441206455" rotation="AD: 1 0 0 0"/>
+            <Part name="Tool_Saw.Back" translation="0 0 -0.0024999999441206455" rotation="AD: 0 1 0 180"/>
+        </MultiTarget>
+        <MultiTarget name="Tool_Stromeyer">
+            <Part name="Stromeyer.Front" translation="0 0 0.0024999999441206455" rotation="AD: 1 0 0 0"/>
+            <Part name="Stromeyer.Back" translation="0 0 -0.0024999999441206455" rotation="AD: 0 1 0 180"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>
