@@ -22,7 +22,6 @@ using Vuforia;
 
 public class TrackableController : MonoBehaviour
 {
-
     //Current active tracked tool
     public GameObject trackedTool;
 
@@ -35,24 +34,24 @@ public class TrackableController : MonoBehaviour
     {
         bool toolTracked = false;
 
-        foreach (TrackableBehaviour tb in TrackerManager.Instance.GetStateManager().GetActiveTrackableBehaviours())
+        foreach (var tb in VuforiaBehaviour.Instance.World.GetObserverBehaviours())
         {
-            
             if (tb.gameObject.tag == "Tool")
             {
                 if (!tb.gameObject.GetComponent<TrackableObject>().beingTracked) continue;
 
                 toolTracked = true;
 
-                if(trackedTool == null && tb.GetComponent<TrackableTool>().calibrated)
+                if (trackedTool == null && tb.GetComponent<TrackableTool>().calibrated)
                 {
                     trackedTool = tb.gameObject;
                 }
+
                 break;
-            } 
+            }
         }
 
-        if(!toolTracked)
+        if (!toolTracked)
         {
             trackedTool = null;
         }
@@ -61,19 +60,16 @@ public class TrackableController : MonoBehaviour
     //Gets called by VoiceCommandsController
     public void CalibrateAndDisplayTool()
     {
-        // Get the Vuforia StateManager
-        StateManager sm = TrackerManager.Instance.GetStateManager();
-
         // Query the StateManager to retrieve the list of currently active trackables 
-        IEnumerable<TrackableBehaviour> activeTrackables = sm.GetActiveTrackableBehaviours();
+        var activeTrackables = VuforiaBehaviour.Instance.World.GetTrackedObserverBehaviours();
 
         // Only continue if calibrator being tracked
         if (!IsCalibratorTracked(activeTrackables)) return;
 
-        foreach (TrackableBehaviour tb in activeTrackables)
+        foreach (var tb in activeTrackables)
         {
-            Debug.Log("Trackable: " + tb.TrackableName);
-            if(tb.gameObject.tag == "Tool")
+            Debug.Log("Trackable: " + tb.name);
+            if (tb.gameObject.CompareTag("Tool"))
             {
                 if (tb.gameObject.GetComponent<TrackableTool>().calibrated)
                 {
@@ -89,12 +85,11 @@ public class TrackableController : MonoBehaviour
         }
     }
 
-
-    private bool IsCalibratorTracked(IEnumerable<TrackableBehaviour> activeTrackables)
+    private bool IsCalibratorTracked(IEnumerable<ObserverBehaviour> activeTrackables)
     {
         bool result = false;
 
-        foreach (TrackableBehaviour tb in activeTrackables)
+        foreach (ObserverBehaviour tb in activeTrackables)
         {
             if (tb.gameObject.tag == "Calibrator")
             {

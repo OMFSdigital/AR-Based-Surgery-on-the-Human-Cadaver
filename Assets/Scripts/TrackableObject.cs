@@ -15,6 +15,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA. */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,40 +24,24 @@ using Vuforia;
 //Custom Trackable Class that handles enabling/disabling tracked objects in a useful way
 public class TrackableObject : DefaultObserverEventHandler
 {
-
     public bool beingTracked = false;
-    //void OnTargetStatusChanged(ObserverBehaviour observerbehavour, TargetStatus status)
-    //{
-    //    if (status.Status == Status.TRACKED && status.StatusInfo == StatusInfo.NORMAL)
-    //    {
-    //        // ...
-    //    }
-    //}
+    private Status oldStatus;
 
-    /*public override void OnTargetStatusChanged(
-        TrackableBehaviour.Status previousStatus,
-        TrackableBehaviour.Status newStatus)
+    private void Awake()
     {
-        m_PreviousStatus = previousStatus;
-        m_NewStatus = newStatus;
+        oldStatus = Status.NO_POSE;
+    }
 
-        //Debug.Log("Trackable " + mTrackableBehaviour.TrackableName +
-        //          " - Status: " + mTrackableBehaviour.CurrentStatus +
-        //          " - Status Info: " + mTrackableBehaviour.CurrentStatusInfo +
-        //          " - Previous Status: " + previousStatus +
-        //          " - New Status: " + newStatus);
-
-
-        if (newStatus == Status.DETECTED ||
-            newStatus == Status.TRACKED)
+    void OnTargetStatusChanged(ObserverBehaviour observerbehavour, TargetStatus status)
+    {
+        if (status.Status == Status.TRACKED && status.StatusInfo == StatusInfo.NORMAL)
         {
             OnTrackingFound();
             beingTracked = true;
-            Debug.Log(mTrackableBehaviour.TrackableName + " is being tracked!");
-            
+            Debug.Log(observerbehavour.name + " is being tracked!");
         }
-        else if (previousStatus == Status.TRACKED &&
-                 newStatus == Status.NO_POSE)
+        else if (oldStatus == Status.TRACKED &&
+                 status.Status == Status.NO_POSE)
         {
             OnTrackingLost();
             beingTracked = false;
@@ -66,5 +51,42 @@ public class TrackableObject : DefaultObserverEventHandler
             OnTrackingLost();
             beingTracked = false;
         }
-    }*/
+
+        oldStatus = status.Status;
+    }
+
+    // public override void OnTargetStatusChanged(
+    //     TrackableBehaviour.Status previousStatus,
+    //     TrackableBehaviour.Status newStatus)
+    // {
+    //     m_PreviousStatus = previousStatus;
+    //     m_NewStatus = newStatus;
+    //
+    //     //Debug.Log("Trackable " + mTrackableBehaviour.TrackableName +
+    //     //          " - Status: " + mTrackableBehaviour.CurrentStatus +
+    //     //          " - Status Info: " + mTrackableBehaviour.CurrentStatusInfo +
+    //     //          " - Previous Status: " + previousStatus +
+    //     //          " - New Status: " + newStatus);
+    //
+    //
+    //     if (newStatus == Status.DETECTED ||
+    //         newStatus == Status.TRACKED)
+    //     {
+    //         OnTrackingFound();
+    //         beingTracked = true;
+    //         Debug.Log(mTrackableBehaviour.TrackableName + " is being tracked!");
+    //         
+    //     }
+    //     else if (previousStatus == Status.TRACKED &&
+    //              newStatus == Status.NO_POSE)
+    //     {
+    //         OnTrackingLost();
+    //         beingTracked = false;
+    //     }
+    //     else
+    //     {
+    //         OnTrackingLost();
+    //         beingTracked = false;
+    //     }
+    // }
 }
